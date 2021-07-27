@@ -6,6 +6,10 @@ $(function() {
   let monsterScroll = document.querySelectorAll('#monster-group .monster')
   let navHeight = nav.scrollHeight
 
+  monsterScroll.forEach(
+    (item) => (item.style.animationDelay = `${Math.random() * .5 + .4}s` )
+  )
+
   function inViewPort(el) {
     let rect = el.getBoundingClientRect()
     return (
@@ -29,7 +33,7 @@ $(function() {
       ? headerCue.classList.add('d-none')
       : headerCue.classList.remove('d-none')
 
-    headerContent.style.transform = `translatey(-${top/1.5}px)`
+    headerContent.style.transform = `translateY(-${top/1.5}px)`
     headerContent.style.opacity = 1 - Math.max(top/ (window.innerHeight * .5),0)
     
     monsterScroll.forEach((item) => 
@@ -42,4 +46,17 @@ $(function() {
   }
 
   window.requestAnimationFrame(moveHeader)
+
+  let controller = new ScrollMagic.Controller()
+  let friendTextTween = TweenMax.from('.friend-text', {
+    y: 500,
+    opacity: 0,
+    duration: 2,
+  })
+
+  new ScrollMagic.Scene({ 
+    triggerElement: '#friend',
+  })
+  .setTween(friendTextTween)
+  .addTo(controller)
 })
