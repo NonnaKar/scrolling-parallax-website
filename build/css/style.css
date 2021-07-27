@@ -1,0 +1,143 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.site-nav {
+  z-index: 20;
+}
+
+/* CHANGE THE NAVBAR COLOR  */
+.site-nav.in-body {
+  background: rgb(99, 64, 145, 0.9);
+  animation: clear 1.25s forwards;
+}
+
+/* SECTION HEADER  */
+.site-header {
+  position: relative;
+  height: 100vh;
+  background: linear-gradient(180deg, rgb(103, 66, 150), rgb(54, 28, 88));
+  overflow: hidden;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  background-image: url(../images/hero.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  opacity: 0;
+  transform: translateY(300px) scale(1.2);
+  animation: clear 0.5s forwards;
+}
+
+.site-nav .nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+/* CREATE AN UNDERLINE  ANIMATION*/
+.site-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  max-width: 100px;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transform: scaleX(0);
+  transition: all 0.5s;
+  opacity: 0;
+}
+
+.site-nav .nav-link:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
+  background-color: white;
+}
+
+/* SLIDE UP EFFECT  FOR TITTLE*/
+.site-header .header-title {
+  transform: translateY(10rem);
+  opacity: 0;
+  animation: clear 0.8s 0.4s forwards;
+}
+
+/* SLIDE UP EFFECT  FOR SUBTITTLE*/
+.site-header .header-subtitle {
+  transform: translateY(10rem);
+  opacity: 0;
+  animation: clear 1.5s 0.7s forwards;
+}
+
+.site-header .header-cue {
+  animation: clear 0.5s 1.5s forwards;
+  transform: translateY(2rem);
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* SLIDEDOWN AND PULSE EFFECT FOR THE ICON */
+.site-header .header-cue-icon {
+  animation: slideDown 0.5s 1.8s forwards, pulse 2s 4s ease-in-out infinite;
+  transform: translateY(-2rem);
+  opacity: 1;
+}
+
+/* SLIDE UP EFFECT FOR IMAGE */
+@keyframes slideUp {
+  from {
+    transform: translateY(300px) scale(1.2);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* SHORTCUT TO CLEAR  */
+@keyframes clear {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* SECTION BODY  */
+/* SLIDE DOWN EFFECT FOR THE ICON */
+@keyframes slideDown {
+  from {
+    transform: translateY(-2rem);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* PULSE EFECT FOR THE ICON  */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: none;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
