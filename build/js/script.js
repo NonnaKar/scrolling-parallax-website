@@ -58,7 +58,40 @@ $(function() {
     duration: '100%',
     triggerHook: 0,
   })
-  .setTween(friendTextTween)
-  .setPin('#friend')
-  .addTo(controller)
+    .setTween(friendTextTween)
+    .setPin('#friend')
+    .addTo(controller)
+
+  // PARACHUTE 
+
+  let parachuteTween = new TimelineMax()
+
+  parachuteTween
+    .from('#parachute', {
+      scale: .5,
+      opacity: .25,
+      rotation: -40,
+      x: '100%',
+      y: '-200'
+    })
+    .to('#parachute', {
+      x: '30%',
+      y: '20%',
+      rotation: -30,
+    })
+    .to('#parachute', {
+      x: '-80%',
+      y: '250%',
+      rotation: 30
+    })
+
+  let parachuteScene = new ScrollMagic.Scene({
+    triggerElement: '#friend',
+    duration: '170%',
+    triggerHook: 0
+  })
+    .setTween(parachuteTween)
+    .addIndicators({name: 'Parachute'})
+    .addTo(controller)
+
 })
