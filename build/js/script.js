@@ -85,13 +85,29 @@ $(function() {
       rotation: 30
     })
 
-  let parachuteScene = new ScrollMagic.Scene({
+  new ScrollMagic.Scene({
     triggerElement: '#friend',
     duration: '170%',
     triggerHook: 0
   })
     .setTween(parachuteTween)
-    .addIndicators({name: 'Parachute'})
     .addTo(controller)
 
-})
+    let typesTween = new TimelineMax()
+    
+    typesTween.from('#types .col', {
+      sale: .5,
+      opacity: 0,
+      stagger: .25,
+    })
+
+    new ScrollMagic.Scene({
+      triggerElement: '#types',
+      triggerHook: 0,
+      duration: 300
+    })
+    .setPin('#types')
+    .setTween(typesTween)
+    .addTo(controller)
+
+}) // when the page loads
